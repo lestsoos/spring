@@ -9,12 +9,16 @@ scheduled:
 spring:
   datasource:
       driver-class-name: oracle.jdbc.OracleDriver
-      url: jdbc:oracle:thin:@192.168.98.130:1521:orcl
+      url: jdbc:oracle:thin:@192.168.1.222:1522:orcl
       username: lestsoos
       password: LESTSOOS
+
 
 jpa:
   hibernate:
      ddl-auto: update
      show-sql: true
 
+logging:
+  level:
+    root: warn
