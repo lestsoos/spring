@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+scheduled:
+  threadNum: 100
+  jobs:
+    fixedDelay: 5000
+    cron: 0/5 * *  * * ?
+spring:
+  datasource:
+      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@192.168.98.130:1521:orcl
+      username: lestsoos
+      password: LESTSOOS
+
+jpa:
+  hibernate:
+     ddl-auto: update
+     show-sql: true
+
