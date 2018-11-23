@@ -48,11 +48,11 @@ public class ScheduledTask {
 
     @Scheduled(initialDelay = 1000, fixedRate = 5000)   //initialDelay = 1000表示延迟1000ms执行第一次任务
     public void testInitialDelay() {
-        log.error("===initialDelay: 第{}次执行方法", initialDelayCount++);
+        log.info("===initialDelay: 第{}次执行方法", initialDelayCount++);
     }
 
     @Scheduled(cron = "0 0/1 * * * ?")  //cron接受cron表达式，根据cron表达式确定定时规则
     public void testCron() {
-        log.warn("===initialDelay: 第{}次执行方法", cronCount++);
+        log.info("===cron: 第{}次执行方法", cronCount++);
     }
 }
