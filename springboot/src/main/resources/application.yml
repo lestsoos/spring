@@ -13,7 +13,6 @@ spring:
       username: lestsoos
       password: LESTSOOS
       type: com.alibaba.druid.pool.DruidDataSource
-
       # 下面为连接池的补充设置，应用到上面所有数据源中
       # 初始化大小，最小，最大
       initialSize: 1
@@ -25,7 +24,7 @@ spring:
       timeBetweenEvictionRunsMillis: 60000
       # 配置一个连接在池中最小生存的时间，单位是毫秒
       minEvictableIdleTimeMillis: 30000
-      validationQuery: select 'x'
+      validationQuery: select 1 from dual
       testWhileIdle: true
       testOnBorrow: false
       testOnReturn: false
@@ -39,15 +38,26 @@ spring:
       # 合并多个DruidDataSource的监控数据
       #useGlobalDataSourceStat: true
 
+  redis:
+    host: localhot
+    port: 6379
+#   url: redis://localhost:6379
+
 
 
 
 jpa:
   hibernate:
-     ddl-auto: update
-     show-sql: true
+    ddl-auto: update
+  show-sql: true
+  open-in-view: false
+
 
 logging:
   level:
-    root: warn
+    root: info
   file: logs/springboot.log
+
+
+
+
