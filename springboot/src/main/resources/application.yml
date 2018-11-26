@@ -39,7 +39,7 @@ spring:
       #useGlobalDataSourceStat: true
 
   redis:
-    host: localhot
+    host: localhost
     port: 6379
 #   url: redis://localhost:6379
 
