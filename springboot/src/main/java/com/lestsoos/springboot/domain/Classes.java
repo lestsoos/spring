@@ -7,6 +7,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,8 +21,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity(name = "CLASSES")
 @ApiModel("班级")
-
-public class Classes  extends BaseEntity {
+@EntityListeners(AuditingEntityListener.class)
+public class Classes {
 
   @Id
   @GeneratedValue(generator = "sys-uuid")
@@ -30,6 +33,7 @@ public class Classes  extends BaseEntity {
   @Column(name="name")
   private String name;
 
+  @CreatedDate
   @ApiModelProperty("新增日期")
   @Column(name="addtime")
   @Temporal(TemporalType.TIMESTAMP)
@@ -41,6 +45,7 @@ public class Classes  extends BaseEntity {
   @Column(name="adduser")
   private String adduser;
 
+  @LastModifiedDate
   @ApiModelProperty("修改日期")
   @Column(name="updatetime")
   @Temporal(TemporalType.TIMESTAMP)

@@ -5,6 +5,7 @@ import com.lestsoos.springboot.service.ClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +20,7 @@ public class ClassesController {
     @Autowired
     private ClassesService classesService;
 
+    @RequestMapping
     public String classes(ModelMap map){
          //classesService.findAll();
         map.addAttribute("classesList",classesService.findAll());
@@ -33,4 +35,13 @@ public class ClassesController {
 
         return "classes/form";
     }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String add(@ModelAttribute Classes classes){
+        classes.setStaus("1");
+        classesService.add(classes);
+        return "redirect:/classess";
+
+    }
+
 }
