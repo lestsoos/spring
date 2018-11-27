@@ -1,0 +1,64 @@
+-- Create table
+create table STUDENT
+(
+  id         VARCHAR2(32) not null,
+  name       VARCHAR2(32),
+  sex        VARCHAR2(1),
+  birthday   DATE,
+  classid    VARCHAR2(32),
+  addtime    DATE,
+  adduser    VARCHAR2(32),
+  updatetime DATE,
+  updateuser VARCHAR2(32),
+  staus      VARCHAR2(1)
+)
+tablespace LESTSOOS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table STUDENT
+  is '学生';
+-- Add comments to the columns 
+comment on column STUDENT.id
+  is '学生ID';
+comment on column STUDENT.name
+  is '姓名';
+comment on column STUDENT.sex
+  is '性别:1 男 0 女';
+comment on column STUDENT.birthday
+  is '出生日期';
+comment on column STUDENT.classid
+  is '班级ID';
+comment on column STUDENT.addtime
+  is '新增日期';
+comment on column STUDENT.adduser
+  is '新增人';
+comment on column STUDENT.updatetime
+  is '修改日期';
+comment on column STUDENT.updateuser
+  is '修改人';
+comment on column STUDENT.staus
+  is '状态:1 可用 2 ';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table STUDENT
+  add constraint PK_STUDENT primary key (ID)
+  using index 
+  tablespace LESTSOOS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

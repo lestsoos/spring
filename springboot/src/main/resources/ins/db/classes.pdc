@@ -1,0 +1,39 @@
+-- Create table
+create table CLASSES
+(
+  id         VARCHAR2(32) not null,
+  name       VARCHAR2(32),
+  addtime    DATE,
+  adduser    VARCHAR2(32),
+  updatetime DATE,
+  updateuser VARCHAR2(32),
+  staus      VARCHAR2(1)
+)
+tablespace LESTSOOS
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table 
+comment on table CLASSES
+  is '班级';
+-- Add comments to the columns 
+comment on column CLASSES.name
+  is '班级名称';
+comment on column CLASSES.addtime
+  is '新增日期';
+comment on column CLASSES.adduser
+  is '新增人';
+comment on column CLASSES.updatetime
+  is '修改日期';
+comment on column CLASSES.updateuser
+  is '修改人';
+comment on column CLASSES.staus
+  is '状态:1 可用 2 ';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table CLASSES
+  add constraint PK_CLASSES primary key (ID)
+  using index 
+  tablespace LESTSOOS
+  pctfree 10
+  initrans 2
+  maxtrans 255;
