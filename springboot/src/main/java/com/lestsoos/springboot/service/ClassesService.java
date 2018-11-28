@@ -13,5 +13,13 @@ public interface ClassesService {
 
     public Classes add(Classes classes);
 
+    public Classes delete(String id);
+
+    public Classes find(String id);
+
+    public Classes update(Classes classes);
+
+
+
 }
 

@@ -28,6 +28,7 @@
                 <input type="text" class="form-control" id="classes_name" name="name" th:value="${classes.name}"
                        th:field="*{classes.name}"/>
             </div>
+            <label class="col-sm-2 control-label text-danger" th:if="${#fields.hasErrors('classes.name')}" th:errors="*{classes.name}">姓名有误!</label>
         </div>
 
 

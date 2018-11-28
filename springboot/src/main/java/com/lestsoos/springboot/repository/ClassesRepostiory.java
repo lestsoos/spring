@@ -9,6 +9,12 @@ import java.util.List;
 public interface ClassesRepostiory extends JpaRepository<Classes,String> {
 
 
-    public List<Classes> findAllByStausOrderByAddtimeDesc(@Param("status") String status);
+    //public List<Classes> findAllOrderByAddtimeDesc(@Param("status") String status);
+
+    //public List<Classes> findClassesOrderByAddtimeDesc(@Param("status") String status);
+
+    //public List<Classes> find
+    //findByStatusOrderByAddtimeDesc(@Param("status") String status);
+
 
 }

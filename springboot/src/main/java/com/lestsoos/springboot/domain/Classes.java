@@ -1,16 +1,27 @@
 package com.lestsoos.springboot.domain;
 
+import com.lestsoos.springboot.constant.ConstantValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.lestsoos.springboot.common.entity.BaseEntity;
+import jdk.internal.org.objectweb.asm.tree.MethodInsnNode;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.*;
+
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.OrderBy;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 /**
  * Title:
@@ -19,9 +30,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 * @author LinHuiXin
  * @date Tue Nov 27 11:39:13 CST 2018
  */
+@Data
 @Entity(name = "CLASSES")
 @ApiModel("班级")
 @EntityListeners(AuditingEntityListener.class)
+@SQLDelete(sql = "update CLASSES set STATUS = '"+ConstantValue.CLASS_STATUS_0 +"' where id = ?")
+@Where(clause = "STATUS = '"+ConstantValue.CLASS_STATUS_1+"'")
 public class Classes {
 
   @Id
@@ -29,20 +43,22 @@ public class Classes {
   @GenericGenerator(name = "sys-uuid", strategy = "uuid")
   private String id;
 
+  @NotEmpty(message = "名称不能为空!")
+  @Size(min = 2,max = 15,message = "姓名长度必须大于 2 且小于 15 字")
   @ApiModelProperty("班级名称")
-  @Column(name="name")
+  @Column(name="name",nullable = false)
   private String name;
 
   @CreatedDate
   @ApiModelProperty("新增日期")
-  @Column(name="addtime")
+  @Column(name="addtime",updatable = false)
   @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss.SSS")
   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
   private Date addtime;
 
   @ApiModelProperty("新增人")
-  @Column(name="adduser")
+  @Column(name="adduser",updatable = false)
   private String adduser;
 
   @LastModifiedDate
@@ -58,11 +74,11 @@ public class Classes {
   private String updateuser;
 
   @ApiModelProperty("状态:1 可用 2 ")
-  @Column(name="staus")
-  private String staus;
+  @Column(name="status")
+  private String status;
 
 
-
+/**
   public String getId() {
     return this.id;
   }
@@ -118,4 +134,5 @@ public class Classes {
   public void setStaus(String staus) {
     this.staus = staus;
   }
+ */
 }

@@ -29,7 +29,7 @@
         <tr th:each="classes : ${classesList}">
             <th scope="row" th:text="${classes.id}"></th>
             <td><a th:href="@{/classess/update/{classesId}(classesId=${classes.id})}" th:text="${classes.name}"></a></td>
-            <td th:text="${classes.addtime}"></td>
+            <td th:text="${#dates.format(classes.addtime,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td><a class="btn btn-danger" th:href="@{/classess/delete/{classesId}(classesId=${classes.id})}">删除</a></td>
         </tr>
         </tbody>

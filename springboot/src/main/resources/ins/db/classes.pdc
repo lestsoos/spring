@@ -37,3 +37,7 @@ alter table CLASSES
   pctfree 10
   initrans 2
   maxtrans 255;
+
+
+
+alter table CLASSES rename column staus to STATUS;
