@@ -9,7 +9,7 @@ scheduled:
 spring:
   datasource:
       driver-class-name: oracle.jdbc.OracleDriver
-      url: jdbc:oracle:thin:@192.168.98.130:1521:orcl
+      url: jdbc:oracle:thin:@192.168.1.222:1522:orcl
       username: lestsoos
       password: LESTSOOS
       type: com.alibaba.druid.pool.DruidDataSource
@@ -39,7 +39,7 @@ spring:
       #useGlobalDataSourceStat: true
 
   redis:
-    host: localhost
+    host: 192.168.1.222
     port: 6379
     database: 11
     password:

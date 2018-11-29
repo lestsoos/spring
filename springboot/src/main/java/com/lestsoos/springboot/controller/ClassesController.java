@@ -1,17 +1,19 @@
 package com.lestsoos.springboot.controller;
 
+import com.lestsoos.springboot.domain.All;
 import com.lestsoos.springboot.domain.Classes;
+import com.lestsoos.springboot.domain.Utils;
+import com.lestsoos.springboot.repository.ClassesRepostiory;
 import com.lestsoos.springboot.service.ClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/classess")
@@ -20,6 +22,24 @@ public class ClassesController {
 
     @Autowired
     private ClassesService classesService;
+
+    @Resource
+    private ClassesRepostiory classesRepostiory;
+
+    @ResponseBody
+    @RequestMapping(value = "/all")
+    public List<All> classesAll(ModelMap map){
+
+        List<Object[]> objects = classesRepostiory.getAllList();
+        List<All> alls = null;
+        try {
+            alls = Utils.castEntity(objects, All.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return alls;
+    }
 
     @RequestMapping
     public String classes(ModelMap map){
