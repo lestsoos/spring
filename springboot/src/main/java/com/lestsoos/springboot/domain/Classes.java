@@ -1,19 +1,13 @@
 package com.lestsoos.springboot.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lestsoos.springboot.constant.ConstantValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import com.lestsoos.springboot.common.entity.BaseEntity;
-import jdk.internal.org.objectweb.asm.tree.MethodInsnNode;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-
-import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.OrderBy;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -22,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
  * Title:
