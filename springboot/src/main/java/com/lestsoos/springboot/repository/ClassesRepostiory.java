@@ -19,7 +19,7 @@ public interface ClassesRepostiory extends JpaRepository<Classes,String> {
 
     @Query
             (
-                    value = "select '张三' as name,'棒极' as classesname,3 as age,sysdate as addtime from dual",
+                    value = "select '张三' as name,'棒极' as classesname,3 as age,1.61 as hig,sysdate as addtime from dual",
                     nativeQuery = true
             )
     public List<Object[]> getAllList();

@@ -14,7 +14,7 @@ import java.util.Date
 packageName = ""
 typeMapping = [
         (~/(?i)tinyint|smallint|mediumint/)      : "Integer",
-        (~/(?i)int/)                             : "Long",
+        (~/(?i)int|number/)                      : "Long",
         (~/(?i)bool|bit/)                        : "Boolean",
         (~/(?i)float|double|decimal|real/)       : "Double",
         (~/(?i)datetime|timestamp|date|time/)    : "Date",
